@@ -1,0 +1,296 @@
+/* MY GYM FITNESS — Client Pages | membership.html & trainers.html */
+
+/* 1. VARIABLES */
+:root {
+    --primary:       #111111;
+    --accent:        #FF7B00;
+    --bg:            #605f5f;
+    --text:          #FFFFFF;
+    --primary-light: #1e1e1e;
+    --accent-hover:  #e06900;
+    --bg-dark:       #3A3A3A;
+    --border:        #2e2e2e;
+    --success:       #28a745;
+    --error:         #dc3545;
+    --shadow:        rgba(0,0,0,0.4);
+    --font-heading:  'Oswald', sans-serif;
+    --font-body:     'Roboto', sans-serif;
+    --space-xs: 8px;  --space-sm: 16px;  --space-md: 24px;
+    --space-lg: 32px; --space-xl: 48px;
+    --radius-sm: 6px; --radius-md: 12px;
+    --transition: 0.3s ease;
+}
+
+/* 2. RESET */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: var(--font-body); background: var(--primary); color: var(--text); line-height: 1.7; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--accent-hover); }
+h1, h2, h3, h4 { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; }
+
+/* 3. NAVBAR */
+header { background: var(--primary); position: sticky; top: 0; z-index: 999; border-bottom: 3px solid var(--accent); }
+
+nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: var(--space-sm) var(--space-lg); }
+
+nav h1 { color: var(--accent); font-size: 1.6rem; letter-spacing: 2px; }
+ul.navbar { display: flex; gap: var(--space-md); }
+
+ul.navbar li a {
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: color var(--transition), border-color var(--transition);
+}
+
+ul.navbar li a:hover,
+ul.navbar li a.active { color: var(--accent); border-color: var(--accent); }
+
+/* 4. FOOTER */
+footer {
+    background: var(--bg-dark);
+    border-top: 3px solid var(--accent);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    padding: var(--space-xl) var(--space-lg);
+}
+
+footer section { flex: 1; min-width: 180px; }
+footer h2 { color: var(--accent); font-size: 1rem; margin-bottom: var(--space-xs); padding-bottom: var(--space-xs); border-bottom: 1px solid var(--bg); }
+footer p, footer li { font-size: 0.9rem; color: #ccc; margin-bottom: 6px; }
+footer a { color: #ccc; }
+footer a:hover { color: var(--accent); }
+
+/* 5. BUTTON */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    background: var(--accent);
+    color: var(--primary);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: var(--space-sm);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    margin-top: var(--space-md);
+    transition: background var(--transition), transform var(--transition);
+}
+
+button[type="submit"]:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+
+/* ============================================================
+   PAGE 3 — MEMBERSHIP
+   ============================================================ */
+
+/* Shared box style: plan cards + trainer cards */
+#plans article, .trainer-card {
+    background: var(--primary-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+/* Shared info box: payment + work-with-us */
+#payment, #work-with-us {
+    margin: var(--space-xl) auto;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--primary-light);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-md);
+}
+
+#payment h2, #work-with-us h2 { color: var(--accent); margin-bottom: var(--space-sm); }
+
+/* Plan Cards Grid */
+#plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    max-width: 1200px;
+    margin: var(--space-xl) auto;
+    padding: 0 var(--space-lg);
+}
+
+#plans > h2, #plans > p { grid-column: 1 / -1; text-align: center; }
+#plans > h2 { color: var(--accent); margin-bottom: var(--space-xs); }
+#plans > p  { color: #ccc; margin-bottom: var(--space-sm); }
+
+#plans article:hover { transform: translateY(-6px); box-shadow: 0 12px 30px var(--shadow); }
+
+#plans .bronze { border-top: 4px solid #cd7f32; }
+#plans .silver { border-top: 4px solid #a8a9ad; }
+#plans .gold   { border-top: 4px solid #ffd700; }
+
+#plans .bronze h3 { color: #cd7f32; }
+#plans .silver h3 { color: #a8a9ad; }
+#plans .gold   h3 { color: #ffd700; }
+
+#plans p { color: #ccc; font-size: 0.9rem; margin: 4px 0; }
+#plans dl { margin: var(--space-sm) 0; }
+
+#plans dt {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: var(--space-xs);
+}
+
+/* Merged: same color and font-size */
+#plans dd, #plans ul li { color: #ccc; font-size: 0.88rem; }
+#plans dd { margin-left: var(--space-sm); }
+#plans ul li { margin-bottom: 6px; }
+
+#plans ul {
+    list-style: disc;
+    padding: var(--space-sm) 0 0 var(--space-sm);
+    border-top: 1px solid var(--border);
+    margin-top: var(--space-sm);
+}
+
+/* Registration Form */
+#register { max-width: 750px; margin: var(--space-xl) auto; padding: 0 var(--space-lg); }
+#register h2 { color: var(--accent); text-align: center; margin-bottom: var(--space-xs); }
+#register > p { text-align: center; color: #ccc; margin-bottom: var(--space-lg); }
+
+fieldset { border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-md); margin-bottom: var(--space-md); }
+
+legend {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 var(--space-xs);
+}
+
+/* margin shorthand replaces margin-top + margin-bottom */
+label { display: block; font-size: 0.9rem; color: #ccc; margin: var(--space-sm) 0 4px; }
+
+fieldset label:has(input[type="radio"]),
+fieldset label:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-top: var(--space-xs);
+    color: var(--text);
+    cursor: pointer;
+}
+
+input[type="text"], input[type="email"], input[type="tel"],
+input[type="date"], textarea, select {
+    width: 100%;
+    background: var(--primary-light);
+    color: var(--text);
+    border: 1px solid var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 10px var(--space-sm);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(255,123,0,0.2);
+}
+
+input.valid   { border-color: var(--success); }
+input.invalid { border-color: var(--error); }
+
+.error-msg { font-size: 0.8rem; color: var(--error); display: none; margin-top: 2px; }
+.error-msg.show { display: block; }
+
+input[type="radio"], input[type="checkbox"] {
+    accent-color: var(--accent);
+    width: 16px; height: 16px;
+    cursor: pointer; flex-shrink: 0;
+}
+
+textarea { resize: vertical; min-height: 100px; }
+select option { background: var(--primary-light); color: var(--text); }
+
+#payment { max-width: 750px; }
+#payment ul li { padding: var(--space-xs) 0; border-bottom: 1px solid var(--border); color: #ccc; font-size: 0.95rem; }
+#payment ul li:last-child { border-bottom: none; }
+
+
+/* ============================================================
+   PAGE 4 — TRAINERS
+   ============================================================ */
+
+#trainers-intro { text-align: center; max-width: 700px; margin: var(--space-xl) auto var(--space-md); padding: 0 var(--space-lg); }
+#trainers-intro h2 { color: var(--accent); margin-bottom: var(--space-sm); }
+#trainers-intro p  { color: #ccc; }
+
+#trainers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    max-width: 1200px;
+    margin: var(--space-md) auto;
+    padding: 0 var(--space-lg);
+}
+
+#trainers-grid > h2 { grid-column: 1 / -1; text-align: center; color: var(--accent); margin-bottom: var(--space-sm); }
+
+.trainer-card { text-align: center; }
+.trainer-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px var(--shadow); }
+
+.trainer-card img {
+    width: 120px; height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    margin: 0 auto var(--space-xs);
+    background: var(--bg-dark);
+}
+
+.trainer-card figcaption { font-size: 0.8rem; color: var(--accent); font-style: italic; margin-bottom: var(--space-xs); }
+
+/* Merged: h3 and h3 a share the same color */
+.trainer-card h3, .trainer-card h3 a { color: var(--text); }
+.trainer-card h3 { margin-bottom: var(--space-xs); }
+.trainer-card h3 a:hover { color: var(--accent); }
+
+.trainer-card p { font-size: 0.88rem; color: #ccc; text-align: left; margin-bottom: 6px; }
+.trainer-card address { font-style: normal; font-size: 0.85rem; margin-top: var(--space-sm); border-top: 1px solid var(--border); padding-top: var(--space-xs); }
+
+#work-with-us { max-width: 800px; }
+#work-with-us ul { list-style: disc; padding-left: var(--space-md); margin: var(--space-sm) 0; }
+#work-with-us ul li { color: #ccc; font-size: 0.95rem; margin-bottom: 8px; }
+#work-with-us p { color: #ccc; margin-top: var(--space-sm); }
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1023px) {
+    nav { flex-direction: column; gap: var(--space-sm); text-align: center; }
+    ul.navbar { flex-wrap: wrap; justify-content: center; }
+    #plans, #trainers-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 767px) {
+    #plans, #trainers-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+}
